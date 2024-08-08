@@ -40,8 +40,7 @@ import {Routes, Route } from 'react-router-dom'
 import PrivateRoutes from './utils/PrivateRoute.jsx';
 
 
-const BASE_URL = 'http://localhost:8000'
-
+const BASE_URL = import.meta.env.VITE_API_URL
 
 function App() {
   const [data, setData] = useState([]);

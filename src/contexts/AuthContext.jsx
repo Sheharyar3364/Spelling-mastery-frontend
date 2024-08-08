@@ -7,6 +7,8 @@ const AuthContext = createContext()
 
 export default AuthContext;
 
+const BASE_URL = import.meta.env.VITE_API_URL
+
 
 export const AuthProvider = ({ children }) => {
     let [authTokens, setAuthTokens] = useState(() => localStorage.getItem("authTokens") ? JSON.parse(localStorage.getItem("authTokens")) : null)
@@ -18,7 +20,7 @@ export const AuthProvider = ({ children }) => {
 
     let login = async (event) => {
         event.preventDefault()
-        let response = await fetch("http://127.0.0.1:8000/api/token/", {
+        let response = await fetch(`${BASE_URL}/api/token/`, {
             method: "POST",
             "headers": {
                 "Content-Type": "application/json"
@@ -33,7 +35,7 @@ export const AuthProvider = ({ children }) => {
             setAuthTokens(data)
             setUser(jwtDecode(data.access))
             localStorage.setItem("authTokens", JSON.stringify(data))
-            navigate("/")
+            navigate("")
         }
         
     }
@@ -46,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     let updateToken = async () => {
-        let response = await fetch("http://localhost:8000/api/token/refresh/", {
+        let response = await fetch(`${BASE_URL}/api/token/refresh/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -70,7 +72,7 @@ export const AuthProvider = ({ children }) => {
 
     let updateLevel = async (newLevel) => {
         const authTokensInLocalStorage = JSON.parse(localStorage.getItem("authTokens"))
-        let response = await fetch("http://localhost:8000/api/updateLevel/", {
+        let response = await fetch(`${BASE_URL}/api/updateLevel/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -88,7 +90,7 @@ export const AuthProvider = ({ children }) => {
 
     const getUserLevel = async () => {
         const authTokensInLocalStorage = JSON.parse(localStorage.getItem("authTokens"))
-        let response = await fetch("http://localhost:8000/api/custom-data/", {
+        let response = await fetch(`${BASE_URL}/api/custom-data/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -144,4 +146,3 @@ export const AuthProvider = ({ children }) => {
         </AuthContext.Provider>
     )
 }
-
