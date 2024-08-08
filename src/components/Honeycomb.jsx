@@ -86,13 +86,17 @@ export function Honeycomb() {
             </section> : ''}
 
             <article className="honeycomb">
-                <Letter letter={puzzle[puzzle.length - 1].central_letter} isCenter={true} />
-                <Letter letter={puzzle[puzzle.length - 1].characters[randomArr[0]]} isCenter={false} />
-                <Letter letter={puzzle[puzzle.length - 1].characters[randomArr[1]]} isCenter={false} />
-                <Letter letter={puzzle[puzzle.length - 1].characters[randomArr[2]]} isCenter={false} />
-                <Letter letter={puzzle[puzzle.length - 1].characters[randomArr[3]]} isCenter={false} />
-                <Letter letter={puzzle[puzzle.length - 1].characters[randomArr[4]]} isCenter={false} />
-                <Letter letter={puzzle[puzzle.length - 1].characters[randomArr[5]]} isCenter={false} />
+                { puzzle[puzzle.length -1] &&
+                    <>
+                        <Letter letter={puzzle[puzzle.length - 1].central_letter} isCenter={true} />
+                        <Letter letter={puzzle[puzzle.length - 1].characters[randomArr[0]]} isCenter={false} />
+                        <Letter letter={puzzle[puzzle.length - 1].characters[randomArr[1]]} isCenter={false} />
+                        <Letter letter={puzzle[puzzle.length - 1].characters[randomArr[2]]} isCenter={false} />
+                        <Letter letter={puzzle[puzzle.length - 1].characters[randomArr[3]]} isCenter={false} />
+                        <Letter letter={puzzle[puzzle.length - 1].characters[randomArr[4]]} isCenter={false} />
+                        <Letter letter={puzzle[puzzle.length - 1].characters[randomArr[5]]} isCenter={false} />
+                    </>
+                }
             </article>
             <section className="buttons">
                 <button className="button" onClick={deleteLetter}>
