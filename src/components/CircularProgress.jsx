@@ -126,22 +126,22 @@ export function CircularProgress( { setShowConfetti, updateLevel, gameLevel }) {
   
   return (
     <section className="circular-progress-container">
-      <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-1xl "><span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 underline underline-offset-3 decoration-8 decoration-yellow-400 dark:decoration-blue-600">Level</span> <span className="underline underline-offset-3 decoration-8 decoration-yellow-400 dark:decoration-blue-600">{gameLevel}</span></h1>
+      <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-1xl "><span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 underline underline-offset-3 decoration-8 decoration-yellow-400">Level</span> <span className="underline underline-offset-3 decoration-8 decoration-yellow-400">{gameLevel}</span></h1>
       <section className="circle">
         <div className="relative size-40">
           {/* Circular Progress */}
           <svg className="size-full" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
             {/* Background Circle */}
-            <circle cx="18" cy="18" r="16" fill="none" className="stroke-current text-yellow-500 dark:text-yellow-400"  strokeWidth="2"></circle>
+            <circle cx="18" cy="18" r="16" fill="none" className="stroke-current text-yellow-500"  strokeWidth="2"></circle>
 
             {/* Progress Circle inside a group with rotation (-clockwise direction) */}
             <g className="origin-center -rotate-90 transform">
-              <circle cx="18" cy="18" r="16" fill="none" className="stroke-current text-gray-200 dark:text-neutral-700"  strokeWidth="2"  strokeDasharray="100" strokeDashoffset={increaseLimit}></circle>
+              <circle cx="18" cy="18" r="16" fill="none" className="stroke-current text-gray-200"  strokeWidth="2"  strokeDasharray="100" strokeDashoffset={increaseLimit}></circle>
             </g>
           </svg>
           {/* Percentage Text */}
           <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
-            <span className="text-center text-2xl font-bold text-gray-800 dark:text-white">{increaseLimit}%</span>
+            <span className="text-center text-2xl font-bold text-gray-800">{increaseLimit}%</span>
           </div>
         </div>
       </section>
